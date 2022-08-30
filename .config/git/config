@@ -51,6 +51,9 @@
 [pager]
     difftool = true
 
+[includeIf "gitdir:~/.cfg/**"]
+    path = ~/.cfg/.gitconfig
+
 [includeIf "gitdir:~/projects/ds/**"]
     path = ~/projects/ds/.gitconfig
 

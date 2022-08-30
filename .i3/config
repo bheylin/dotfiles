@@ -19,13 +19,23 @@ font xft:URWGothic-Book 11
 bindsym $mod+Return exec alacritty
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+Mod1+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id dmenu_recency
 
 # create a new workspace choosing the next available index
 bindsym $mod+w exec --no-startup-id ~/.i3/new_workspace.sh
+
+# reload the configuration file
+bindsym $mod+Mod1+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Mod1+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Mod1+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -43,16 +53,26 @@ bindsym $mod+Ctrl+m exec pavucontrol
 focus_follows_mouse no
 
 #navigate workspaces next / previous
-bindsym $mod+Ctrl+l workspace next
-bindsym $mod+Ctrl+h workspace prev
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Mod1+l workspace next
+bindsym $mod+Mod1+h workspace prev
+
+bindsym $mod+Mod1+o workspace next
+bindsym $mod+Mod1+n workspace prev
+
+bindsym $mod+Mod1+Right workspace next
+bindsym $mod+Mod1+Left workspace prev
 
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+bindsym $mod+n focus left
+bindsym $mod+e focus down
+bindsym $mod+i focus up
+bindsym $mod+o focus right
+
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -63,6 +83,12 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+n move left
+bindsym $mod+Shift+e move down
+bindsym $mod+Shift+i move up
+bindsym $mod+Shift+o move right
+
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -162,15 +188,6 @@ for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
