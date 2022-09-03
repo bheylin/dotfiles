@@ -54,6 +54,9 @@
 [includeIf "gitdir:~/.cfg/**"]
     path = ~/.cfg/.gitconfig
 
+[includeIf "gitdir:~/.cfg-ds/**"]
+    path = ~/.cfg-ds/.gitconfig
+
 [includeIf "gitdir:~/projects/ds/**"]
     path = ~/projects/ds/.gitconfig
 
