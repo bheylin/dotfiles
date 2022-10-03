@@ -46,7 +46,7 @@ bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # exec --no-startup-id start-pulseaudio-x11
 # exec --no-startup-id pa-applet
 exec --no-startup-id pasystray
-bindsym $mod+Ctrl+m exec pavucontrol
+bindsym $mod+Alt+m exec pavucontrol
 
 ################################################################################################
 
