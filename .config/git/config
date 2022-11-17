@@ -2,12 +2,13 @@
     br = branch
     ci = commit
     co = checkout
-    dft = difftool
-    out = log --pretty=oneline --abbrev-commit --graph @{u}..
-    st = status
-    sw = switch
     df = diff
     dfi = -c delta.side-by-side=false -c delta.line-numbers=false diff
+    dft = difftool
+    out = log --pretty=oneline --abbrev-commit --graph @{u}..
+    pp = pull --prune
+    st = status
+    sw = switch
 
 [commit]
     gpgsign = true
