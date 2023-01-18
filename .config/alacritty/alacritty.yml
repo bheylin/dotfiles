@@ -9,7 +9,7 @@ font:
   normal:
     family: Iosevka Term
     style: Regular
-  size: 8
+  size: 7
 
 import:
   - ~/.config/alacritty/ayu_mirage.yml
