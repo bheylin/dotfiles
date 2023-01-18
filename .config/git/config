@@ -4,7 +4,7 @@
     co = checkout
     df = diff
     dfi = -c delta.side-by-side=false -c delta.line-numbers=false diff
-    dft = difftool
+    dft = difftool -t difftastic
     out = log --pretty=oneline --abbrev-commit --graph @{u}..
     pp = pull --prune
     st = status
@@ -28,17 +28,12 @@
 
 [diff]
     colorMoved = default
-    tool = difftastic
-	external = difft
 
 [difftool]
     prompt = false
     
 [difftool "difftastic"]
     cmd = difft "$LOCAL" "$REMOTE"
-
-[include]
-    path = ~/projects/third_party/delta/themes.gitconfig
 
 [init]
     defaultBranch = main
