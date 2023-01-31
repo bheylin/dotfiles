@@ -7,8 +7,21 @@ scrolling:
 
 font:
   normal:
-    family: Iosevka Term
+    family: IosevkaTermNerdFont
     style: Regular
+
+  bold:
+    family: IosevkaTermNerdFont
+    style: Bold
+
+  italic:
+    family: IosevkaTermNerdFont
+    style: Italic
+
+  bold_italic:
+    family: IosevkaTermNerdFont
+    style: Bold Italic
+
   size: 7
 
 import:
