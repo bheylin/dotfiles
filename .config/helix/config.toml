@@ -42,3 +42,7 @@ newline = "◀"
 
 [keys.normal]
 X = "extend_line_above"
+C-up = "expand_selection"
+C-down = "shrink_selection"
+C-left = "select_prev_sibling"
+C-right = "select_next_sibling"
