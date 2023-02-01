@@ -49,14 +49,14 @@ bindsym $mod+Alt+m exec pavucontrol
 focus_follows_mouse no
 
 #navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Right workspace next
+bindsym $mod+Left workspace prev
 
 # change focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Ctrl+Left focus left
+bindsym $mod+Ctrl+Down focus down
+bindsym $mod+Ctrl+Up focus up
+bindsym $mod+Ctrl+Right focus right
 
 # move focused window
 bindsym $mod+Shift+Left move left
