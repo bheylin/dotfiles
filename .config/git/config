@@ -10,8 +10,8 @@
     st = status
     sw = switch
 
-[commit]
-    gpgsign = true
+# [commit]
+#     gpgsign = true
 
 [core]
     pager = delta
