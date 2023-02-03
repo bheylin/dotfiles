@@ -1,13 +1,18 @@
 layout {
-    pane split_direction="vertical" {
-        pane
-        pane split_direction="horizontal" {
-            pane command="exa" {
-                args "--color" "always" "-l"
+    tab name="Explore" {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane split_direction="Vertical" {
+            pane size="15%" {
+                // TODO: when we support sending CWD to plugins, this should start in ./zellij-derver
+                plugin location="zellij:strider"
             }
-            pane command="git" {
-                args "log"
-            }
+            children
+        }
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
         }
     }
+
 }
