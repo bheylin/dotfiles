@@ -10,17 +10,22 @@ layout {
     }
 
     tab name="Test" {
-        pane split_direction="Vertical" {
-            pane command="cargo" start_suspended=true {
-                args "x" "ci" "-c" "ocpi"
-            }
+        pane split_direction="vertical" {
             pane
+            pane split_direction="horizontal" {
+                pane command="cargo" start_suspended=true {
+                    args "test"
+                }
+                pane command="cargo" start_suspended=true {
+                    args "clippy"
+                }
+            }
         }
     }
 
     tab name="Edit" focus=true {
         pane split_direction="Vertical" {
-            pane edit="."
+            pane edit="." focus=true
         }
     }
 
