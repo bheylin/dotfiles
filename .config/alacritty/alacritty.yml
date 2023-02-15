@@ -7,30 +7,27 @@ scrolling:
 
 font:
   normal:
-    family: IosevkaTermNerdFont
+    family: Hack
     style: Regular
-
+    
   bold:
-    family: IosevkaTermNerdFont
+    family: Hack
     style: Bold
 
   italic:
-    family: IosevkaTermNerdFont
+    family: Hack
     style: Italic
 
   bold_italic:
-    family: IosevkaTermNerdFont
+    family: Hack
     style: Bold Italic
 
-  size: 7
+  size: 6
 
 import:
   - ~/.config/alacritty/ayu_mirage.yml
 
 cursor:
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
   style: Beam
 
 selection:
@@ -57,61 +54,15 @@ key_bindings:
   - { key: Plus, mods: Control|Shift, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
 
-  # Vi Mode
-  #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
-  #- { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
-  #- { key: Escape,                      mode: Vi|~Search, action: ClearSelection          }
-  - { key: L,                           mode: Vi|~Search, action: ToggleViMode            }
-  - { key: L,                           mode: Vi|~Search, action: ScrollToBottom          }
-  #- { key: C,      mods: Control,       mode: Vi|~Search, action: ToggleViMode            }
-  #- { key: Y,      mods: Control,       mode: Vi|~Search, action: ScrollLineUp            }
-  #- { key: E,      mods: Control,       mode: Vi|~Search, action: ScrollLineDown          }
-  #- { key: G,                           mode: Vi|~Search, action: ScrollToTop             }
-  #- { key: G,      mods: Shift,         mode: Vi|~Search, action: ScrollToBottom          }
-  - { key: PageUp,                          mode: Vi|~Search, action: ScrollPageUp            }
-  - { key: PageDown,                        mode: Vi|~Search, action: ScrollPageDown          }
-  - { key: PageUp,      mods: Control,       mode: Vi|~Search, action: ScrollHalfPageUp        }
-  - { key: PageDown,      mods: Control,       mode: Vi|~Search, action: ScrollHalfPageDown      }
-  #- { key: Y,                           mode: Vi|~Search, action: Copy                    }
-  #- { key: Y,                           mode: Vi|~Search, action: ClearSelection          }
-  #- { key: Copy,                        mode: Vi|~Search, action: ClearSelection          }
-  #- { key: V,                           mode: Vi|~Search, action: ToggleNormalSelection   }
-  #- { key: V,      mods: Shift,         mode: Vi|~Search, action: ToggleLineSelection     }
-  #- { key: V,      mods: Control,       mode: Vi|~Search, action: ToggleBlockSelection    }
-  #- { key: V,      mods: Alt,           mode: Vi|~Search, action: ToggleSemanticSelection }
-  #- { key: Return,                      mode: Vi|~Search, action: Open                    }
-  #- { key: Z,                           mode: Vi|~Search, action: CenterAroundViCursor    }
-  - { key: Up,                          mode: Vi|~Search, action: Up                      }
-  - { key: Down,                        mode: Vi|~Search, action: Down                    }
-  - { key: Left,                        mode: Vi|~Search, action: Left                    }
-  - { key: Right,                       mode: Vi|~Search, action: Right                   }
-  #- { key: Key0,                        mode: Vi|~Search, action: First                   }
-  #- { key: Key4,   mods: Shift,         mode: Vi|~Search, action: Last                    }
-  #- { key: Key6,   mods: Shift,         mode: Vi|~Search, action: FirstOccupied           }
-  #- { key: H,      mods: Shift,         mode: Vi|~Search, action: High                    }
-  #- { key: M,      mods: Shift,         mode: Vi|~Search, action: Middle                  }
-  #- { key: L,      mods: Shift,         mode: Vi|~Search, action: Low                     }
-  #- { key: B,                           mode: Vi|~Search, action: SemanticLeft            }
-  #- { key: W,                           mode: Vi|~Search, action: SemanticRight           }
-  #- { key: E,                           mode: Vi|~Search, action: SemanticRightEnd        }
-  #- { key: B,      mods: Shift,         mode: Vi|~Search, action: WordLeft                }
-  #- { key: W,      mods: Shift,         mode: Vi|~Search, action: WordRight               }
-  #- { key: E,      mods: Shift,         mode: Vi|~Search, action: WordRightEnd            }
-  #- { key: Key5,   mods: Shift,         mode: Vi|~Search, action: Bracket                 }
-  #- { key: Slash,                       mode: Vi|~Search, action: SearchForward           }
-  #- { key: Slash,  mods: Shift,         mode: Vi|~Search, action: SearchBackward          }
-  - { key: H,                           mode: Vi|~Search, action: SearchNext              }
-  - { key: H,      mods: Shift,         mode: Vi|~Search, action: SearchPrevious          }
-
-  # Search Mode
-  #- { key: Return,                mode: Search|Vi,  action: SearchConfirm         }
-  #- { key: Escape,                mode: Search,     action: SearchCancel          }
-  #- { key: C,      mods: Control, mode: Search,     action: SearchCancel          }
-  #- { key: U,      mods: Control, mode: Search,     action: SearchClear           }
-  #- { key: W,      mods: Control, mode: Search,     action: SearchDeleteWord      }
-  #- { key: P,      mods: Control, mode: Search,     action: SearchHistoryPrevious }
-  #- { key: N,      mods: Control, mode: Search,     action: SearchHistoryNext     }
-  #- { key: Up,                    mode: Search,     action: SearchHistoryPrevious }
-  #- { key: Down,                  mode: Search,     action: SearchHistoryNext     }
-  #- { key: Return,                mode: Search|~Vi, action: SearchFocusNext       }
-  #- { key: Return, mods: Shift,   mode: Search|~Vi, action: SearchFocusPrevious   }
+  - { key: L,mode: Vi|~Search, action: ToggleViMode }
+  - { key: L,mode: Vi|~Search, action: ScrollToBottom }
+  - { key: PageUp,mode: Vi|~Search, action: ScrollPageUp }
+  - { key: PageDown,mode: Vi|~Search, action: ScrollPageDown }
+  - { key: PageUp, mods: Control,  mode: Vi|~Search, action: ScrollHalfPageUp }
+  - { key: PageDown, mods: Control,mode: Vi|~Search, action: ScrollHalfPageDown }
+  - { key: Up, mode: Vi|~Search, action: Up }
+  - { key: Down, mode: Vi|~Search, action: Down }
+  - { key: Left, mode: Vi|~Search, action: Left }
+  - { key: Right, mode: Vi|~Search, action: Right }
+  - { key: H, mode: Vi|~Search, action: SearchNext }
+  - { key: H, mods: Shift, mode: Vi|~Search, action: SearchPrevious }
