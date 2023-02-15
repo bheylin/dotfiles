@@ -25,13 +25,13 @@ layout {
 
     tab name="Edit" focus=true {
         pane split_direction="Vertical" {
-            pane edit="." focus=true
+            pane focus=true
         }
     }
 
     tab name="Git" {
         pane split_direction="Horizontal" {
-            pane command="gitui"
+            pane
             pane size="25%"
         }
     }
