@@ -21,13 +21,32 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
+[editor.lsp]
+auto-signature-help = true
+display-inlay-hints = true
+display-messages = true
+display-signature-help-docs = true
+snippets = true
+
 [editor.indent-guides]
 character = "┆"
 skip-levels = 1
 render = true
 
+[editor.soft-wrap]
+enable = true
+wrap-indicator = "↪"
+wrap-at-text-width = true
+
 [editor.statusline]
-right = ["diagnostics", "selections", "primary-selection-length", "position", "total-line-numbers", "file-encoding"]
+right = [
+  "diagnostics", 
+  "selections", 
+  "primary-selection-length", 
+  "position", 
+  "total-line-numbers", 
+  "file-encoding"
+]
 
 [editor.whitespace.render]
 newline = "all"
