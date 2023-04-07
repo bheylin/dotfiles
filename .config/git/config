@@ -5,7 +5,7 @@
     df = diff
     dfi = -c delta.side-by-side=false -c delta.line-numbers=false diff
     dft = difftool -t difftastic
-    out = log --pretty=oneline --abbrev-commit --graph @{u}..
+    out = log --oneline @{push}..
     pp = pull --prune
     st = status
     sw = switch
