@@ -1,17 +1,44 @@
 [[language]]
 name = "markdown"
 indent = { tab-width = 4, unit = "    " }
+text-width = 100
 
 [[language]]
 name = "html"
 indent = { tab-width = 2, unit = "    " }
+text-width = 160
 
 [[language]]
 name = "kdl"
 indent = { tab-width = 4, unit = "    " }
+text-width = 160
 
 [[language]]
 name = "rust"
+text-width = 160
+
+[[language]]
+name = "toml"
+text-width = 160
+
+[[language]]
+name = "c"
+text-width = 160
+
+[language.config]
+inlayHints.bindingModeHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false
+
+[[language]]
+name = "sql"
+text-width = 100
+
+[language.config]
+checkOnSave = { enabled = true, command = "clippy" }
 
 [language.debugger]
 command = "codelldb"
@@ -22,6 +49,7 @@ transport = "tcp"
 [[language.debugger.templates]]
 name = "binary"
 request = "launch"
+
 [[language.debugger.templates.completion]]
 completion = "filename"
 name = "binary"
