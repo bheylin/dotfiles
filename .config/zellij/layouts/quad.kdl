@@ -3,7 +3,10 @@ layout {
         plugin location="zellij:tab-bar"
     }
     pane split_direction="vertical" {
-        pane
+        pane split_direction="horizontal" {
+            pane
+            pane
+        }
         pane split_direction="horizontal" {
             pane
             pane

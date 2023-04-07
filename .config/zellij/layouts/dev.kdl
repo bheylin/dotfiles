@@ -11,28 +11,28 @@ layout {
 
     tab name="Test" {
         pane split_direction="vertical" {
-            pane
             pane split_direction="horizontal" {
-                pane command="cargo" start_suspended=true {
-                    args "test"
-                }
-                pane command="cargo" start_suspended=true {
-                    args "clippy"
-                }
+                pane
+                pane
             }
+            pane
         }
     }
 
     tab name="Edit" focus=true {
-        pane split_direction="Vertical" {
-            pane focus=true
-        }
+        pane
     }
 
     tab name="Git" {
-        pane split_direction="Horizontal" {
-            pane
-            pane size="25%"
+        pane split_direction="vertical" {
+            pane {
+                pane command="gitui"
+                pane size="20%"
+            }
         }
+    }
+
+    tab name="Diff" {
+        pane
     }
 }

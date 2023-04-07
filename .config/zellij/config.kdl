@@ -30,8 +30,8 @@ keybinds clear-defaults=true {
         bind "J" { Resize "Decrease Down"; }
         bind "K" { Resize "Decrease Up"; }
         bind "L" { Resize "Decrease Right"; }
-        bind "=" "+" { Resize "Increase"; }
-        bind "-" { Resize "Decrease"; }
+        bind "a" { Resize "Increase"; }
+        bind "x" { Resize "Decrease"; }
     }
     pane {
         bind "Ctrl p" { SwitchToMode "Normal"; }
@@ -132,6 +132,8 @@ keybinds clear-defaults=true {
         bind "Alt Down" { MoveFocus "Down"; }
         bind "Alt Up" { MoveFocus "Up"; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
+        bind "Alt [" { PreviousSwapLayout; }
+        bind "Alt ]" { NextSwapLayout; }
     }
     shared {
         bind "Alt Left" { MoveFocusOrTab "Left"; }
