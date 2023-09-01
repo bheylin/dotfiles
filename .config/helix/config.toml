@@ -3,15 +3,16 @@ theme = "sonokai"
 [editor]
 auto-completion = true
 bufferline = "always"
-cursorline = true
 color-modes = true
+cursorline = true
 idle-timeout = 400
 line-number = "relative"
 middle-click-paste = false
 mouse = false
 rulers = [100]
-true-color = true
 scrolloff = 10
+text-width = 160
+true-color = true
 
 [editor.cursor-shape]
 insert = "bar"
