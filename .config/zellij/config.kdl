@@ -1,6 +1,7 @@
 // theme "default"
 default_layout "one+two"
 default_mode "locked"
+default_shell "nu"
 scroll_buffer_size 10000
 
 plugins {
@@ -10,7 +11,6 @@ plugins {
     compact-bar { path "compact-bar"; }
 }
 
-// If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds clear-defaults=true {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
@@ -21,15 +21,15 @@ keybinds clear-defaults=true {
         bind "Ctrl g" { SwitchToMode "Normal"; }
     }
     resize {
-        bind "Ctrl n" { SwitchToMode "Normal"; }
-        bind "h" "Left" { Resize "Increase Left"; }
-        bind "j" "Down" { Resize "Increase Down"; }
-        bind "k" "Up" { Resize "Increase Up"; }
-        bind "l" "Right" { Resize "Increase Right"; }
-        bind "H" { Resize "Decrease Left"; }
-        bind "J" { Resize "Decrease Down"; }
-        bind "K" { Resize "Decrease Up"; }
-        bind "L" { Resize "Decrease Right"; }
+        bind "Alt n" { SwitchToMode "Normal"; }
+        bind "Left" { Resize "Increase Left"; }
+        bind "Down" { Resize "Increase Down"; }
+        bind "Up" { Resize "Increase Up"; }
+        bind "Right" { Resize "Increase Right"; }
+        // bind "Ctrl Left" { Resize "Decrease Left"; }
+        // bind "Ctrl Down" { Resize "Decrease Down"; }
+        // bind "Ctrl Up" { Resize "Decrease Up"; }
+        // bind "Ctrl Right" { Resize "Decrease Right"; }
         bind "a" { Resize "Increase"; }
         bind "x" { Resize "Decrease"; }
     }
@@ -136,8 +136,10 @@ keybinds clear-defaults=true {
         bind "Alt ]" { NextSwapLayout; }
     }
     shared {
-        bind "Alt Left" { MoveFocusOrTab "Left"; }
-        bind "Alt Right" { MoveFocusOrTab "Right"; }
+        bind "Alt ," { GoToPreviousTab; }
+        bind "Alt ." { GoToNextTab; }
+        bind "Alt Left" { MoveFocus "Left"; }
+        bind "Alt Right" { MoveFocus "Right"; }
         bind "Alt Down" { MoveFocus "Down"; }
         bind "Alt Up" { MoveFocus "Up"; }
     }

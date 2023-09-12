@@ -11,11 +11,14 @@ layout {
 
     tab name="Test" {
         pane split_direction="vertical" {
-            pane split_direction="horizontal" {
+            pane stacked=true {
                 pane
                 pane
             }
-            pane
+            pane stacked=true {
+                pane
+                pane
+            }
         }
     }
 
@@ -25,7 +28,7 @@ layout {
 
     tab name="Git" {
         pane split_direction="vertical" {
-            pane {
+            pane stacked=true{
                 pane command="gitui"
                 pane size="20%"
             }
