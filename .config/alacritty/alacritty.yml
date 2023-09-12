@@ -22,7 +22,7 @@ font:
     family: Hack
     style: Bold Italic
 
-  size: 6
+  size: 12
 
 import:
   - ~/.config/alacritty/ayu_mirage.yml
@@ -44,7 +44,7 @@ env:
 shell:
   program: /usr/bin/env
   args:
-    - fish
+    - nu
 
 key_bindings:
   - { key: V, mods: Control|Shift, action: Paste }
