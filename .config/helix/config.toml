@@ -41,11 +41,11 @@ wrap-at-text-width = true
 
 [editor.statusline]
 right = [
-  "diagnostics", 
-  "selections", 
-  "primary-selection-length", 
-  "position", 
-  "total-line-numbers", 
+  "diagnostics",
+  "selections",
+  "primary-selection-length",
+  "position",
+  "total-line-numbers",
   "file-encoding"
 ]
 
