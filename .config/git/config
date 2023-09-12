@@ -10,9 +10,6 @@
     st = status
     sw = switch
 
-# [commit]
-#     gpgsign = true
-
 [core]
     pager = delta
     excludesfile = ~/.config/.gitignore
@@ -51,6 +48,9 @@
 [push]
     # Always push as if `-u` has been specified
     autoSetupRemote = true
+
+[pull]
+    rebase = true
 
 [includeIf "gitdir:~/.cfg/**"]
     path = ~/.cfg/.gitconfig
