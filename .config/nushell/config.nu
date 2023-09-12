@@ -770,5 +770,7 @@ $env.config = {
 alias cfg = git --git-dir=/home/brianh/.cfg/ --work-tree=/home/brianh
 alias cfg-ds = git --git-dir=/home/brianh/.cfg-ds/ --work-tree=/home/brianh
 
-source ~/.config/nushell/zoxide.nu
 source ~/.config/nushell/postgresql.nu
+source ~/.cache/zoxide/init.nu
+use ~/.cache/starship/init.nu
+source ~/.cache/atuin/init.nu
