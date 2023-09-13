@@ -68,9 +68,9 @@ bindsym $mod+Left workspace prev_on_output
 bindsym $mod+Up focus output next
 # create a new workspace choosing the next available index
 bindsym $mod+n exec --no-startup-id nu ~/.config/i3/new_workspace.nu
-bindsym $mod+Ctrl+w move workspace to output next
+bindsym $mod+Shift+o move workspace to output next
 # gather all workspaces to the primary output
-bindsym $mod+Ctrl+g exec --no-startup-id nu ~/.config/i3/gather_workspaces.nu
+bindsym $mod+Shift+g exec --no-startup-id nu ~/.config/i3/gather_workspaces.nu
 
 bindsym $mod+Ctrl+Left focus left
 bindsym $mod+Ctrl+Down focus down
