@@ -5,6 +5,11 @@ text-width = 160
 
 [[language]]
 name = "html"
+indent = { tab-width = 2, unit = "  " }
+text-width = 160
+
+[[language]]
+name = "nu"
 indent = { tab-width = 2, unit = "    " }
 text-width = 160
 

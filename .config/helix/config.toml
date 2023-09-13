@@ -6,6 +6,7 @@ bufferline = "always"
 color-modes = true
 cursorline = true
 idle-timeout = 400
+insert-final-newline = true
 line-number = "relative"
 middle-click-paste = false
 mouse = false
@@ -31,22 +32,22 @@ snippets = true
 
 [editor.indent-guides]
 character = "┆"
-skip-levels = 1
 render = true
+skip-levels = 1
 
 [editor.soft-wrap]
 enable = true
-wrap-indicator = "↪"
 wrap-at-text-width = true
+wrap-indicator = "↪"
 
 [editor.statusline]
 right = [
   "diagnostics",
-  "selections",
-  "primary-selection-length",
+  "file-encoding",
   "position",
+  "primary-selection-length",
+  "selections",
   "total-line-numbers",
-  "file-encoding"
 ]
 
 [editor.whitespace.render]
@@ -55,14 +56,14 @@ space = "all"
 tab = "all"
 
 [editor.whitespace.characters]
-space = "·"
 nbsp = "⍽"
-tab = "→"
 newline = "◀"
+space = "·"
+tab = "→"
 
 [keys.normal]
-X = "extend_line_above"
-C-up = "expand_selection"
 C-down = "shrink_selection"
 C-left = "select_prev_sibling"
 C-right = "select_next_sibling"
+C-up = "expand_selection"
+X = "extend_line_above"
