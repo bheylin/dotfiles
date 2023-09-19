@@ -1,7 +1,7 @@
 // theme "default"
 default_layout "stktab"
 default_mode "locked"
-default_shell "nu"
+default_shell "fish"
 scroll_buffer_size 10000
 
 plugins {

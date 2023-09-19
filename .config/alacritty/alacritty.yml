@@ -44,7 +44,7 @@ env:
 shell:
   program: /usr/bin/env
   args:
-    - nu
+    - fish
 
 key_bindings:
   - { key: V, mods: Control|Shift, action: Paste }
