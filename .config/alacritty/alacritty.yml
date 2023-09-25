@@ -3,7 +3,7 @@ window:
   opacity: 1
 
 scrolling:
-  history: 100000
+  history: 10000
 
 font:
   normal:
