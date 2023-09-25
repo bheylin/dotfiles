@@ -1,7 +1,5 @@
 ! display settings
 URxvt.depth: 32
-! Face text color when terminal loses focus
-URxvt.fading: 30
 
 ! DejaVuSans contains braille glyphs (for btm)
 ! Source Code Pro contains emojis
