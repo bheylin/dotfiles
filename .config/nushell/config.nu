@@ -774,4 +774,6 @@ source ~/.config/nushell/env/postgresql.nu
 source ~/.cache/zoxide/init.nu
 use ~/.cache/starship/init.nu
 source ~/.cache/atuin/init.nu
-use ~/.config/nushell/commands/cargo-pkg-upgrade.nu
+source ~/.config/nushell/commands/cargo-pkg-upgrade.nu
+
+source /home/brianh/.config/broot/launcher/nushell/br
