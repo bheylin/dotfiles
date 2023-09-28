@@ -1,5 +1,8 @@
-alias ls="eza"
+alias gpp="git pull --rebase"
+alias gst="git st -s"
+alias lg="lazygit"
 alias ll="ls -l"
+alias ls="eza"
 alias z="zoxide"
 
 # git repo that tracks personal dotfiles
