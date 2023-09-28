@@ -1,4 +1,4 @@
-theme "ayu-mirage"
+theme "catppuccin_mocha"
 default_layout "stktab"
 default_mode "locked"
 default_shell "fish"
@@ -113,18 +113,18 @@ keybinds clear-defaults=true {
         bind "Ctrl l" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Quit; }
         bind "Alt n" { NewPane; }
-        bind "Alt [" { PreviousSwapLayout; }
-        bind "Alt ]" { NextSwapLayout; }
+        // bind "Alt [" { PreviousSwapLayout; }
+        // bind "Alt ]" { NextSwapLayout; }
     }
     shared {
-        bind "Alt <" { GoToPreviousTab; }
-        bind "Alt >" { GoToNextTab; }
+        bind "Alt [" { GoToPreviousTab; }
+        bind "Alt ]" { GoToNextTab; }
         bind "Alt Left" { MoveFocus "Left"; }
         bind "Alt Right" { MoveFocus "Right"; }
         bind "Alt Down" { MoveFocus "Down"; }
         bind "Alt Up" { MoveFocus "Up"; }
-        bind "Alt [" { PreviousSwapLayout; }
-        bind "Alt ]" { NextSwapLayout; }
+        // bind "Alt [" { PreviousSwapLayout; }
+        // bind "Alt ]" { NextSwapLayout; }
         bind "Alt 1" { GoToTab 1; SwitchToMode "Normal"; }
         bind "Alt 2" { GoToTab 2; SwitchToMode "Normal"; }
         bind "Alt 3" { GoToTab 3; SwitchToMode "Normal"; }
