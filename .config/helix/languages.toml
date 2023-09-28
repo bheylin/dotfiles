@@ -25,17 +25,13 @@ language-servers = ["rust-analyzer"]
 
 [language-server.rust-analyzer.config]
 checkOnSave = { enabled = true, command = "check" }
-# inlayHints.bindingModeHints.enable = false
-# inlayHints.closingBraceHints.minLines = 10
-# inlayHints.closureReturnTypeHints.enable = "with_block"
-# inlayHints.discriminantHints.enable = "fieldless"
-# inlayHints.lifetimeElisionHints.enable = "skip_trivial"
-# inlayHints.typeHints.hideClosureInitialization = false
+inlayHints.parameterHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
 # workspace.symbol.search.kind = "all_symbols"
 # workspace.symbol.search.limit = 65536
-# procMacro.enable = false
-diagnostics.experimental.enable = true
-# diagnostics.disabled = ["unresolved-proc-macro"]
+procMacro.enable = false
+diagnostics.experimental.enable = false
+diagnostics.disabled = ["unresolved-proc-macro"]
 
 [language.debugger]
 command = "codelldb"

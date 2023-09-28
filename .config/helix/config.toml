@@ -1,4 +1,4 @@
-theme = "ayu_mirage"
+theme = "catppuccin_mocha"
 
 [editor]
 auto-completion = true
@@ -14,9 +14,6 @@ rulers = [100]
 scrolloff = 10
 text-width = 160
 true-color = true
-
-[editor.search]
-wrap-around = false
 
 [editor.cursor-shape]
 insert = "bar"
