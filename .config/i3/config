@@ -15,6 +15,9 @@ set $mod Mod4
 # is used in the bar {} block below.
 # font pango:monospace 8
 
+default_border pixel 1
+default_floating_border none
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
@@ -47,6 +50,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+smart_borders on
 
 # start a terminal
 bindsym $mod+Return exec rxvt
@@ -193,6 +197,7 @@ client.background       #FFFFFF
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+  position top
   colors {
     background #000000
     statusline #FFFFFF
