@@ -1,1 +1,13 @@
-~/.config/nushell/history.txt
+broot/launcher
+broot/skins
+dconf.user
+fish/fish_variables
+fish/functions/br.fish
+helix/runtime
+keepassxc/keepassxc.ini
+lazygit/state.yml
+nushell/history.txt
+pulse/cookie
+sealert.conf
+user-dirs.*
+volumeicon/volumeicon
