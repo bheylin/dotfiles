@@ -3,7 +3,6 @@
     ci = commit
     co = checkout
     df = diff
-    dfi = -c delta.side-by-side=false -c delta.line-numbers=false diff
     dft = difftool -t difftastic
     out = log --oneline @{push}..
     pp = pull --prune
@@ -15,10 +14,11 @@
     excludesfile = ~/.config/.gitignore
     
 [delta]
-    line-numbers = true
     features = zebra-dark
+    line-numbers = true
     navigate = true
-    side-by-side = true
+    side-by-side = false
+    syntax-theme = Catppuccin-mocha
         
 [delta "interactive"]
     keep-plus-minus-markers = false
