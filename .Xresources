@@ -2,11 +2,11 @@
 URxvt.depth: 24
 
 ! DejaVuSans contains braille glyphs (for btm)
-! Source Code Pro contains emojis
-URxvt.font: xft:Hack:size=12,xft:DejaVuSans:size=12,xft:Source Code Pro:size=12
-URxvt.boldFont: xft:Hack:size=12,xft:DejaVuSans:size=12,xft:Source Code Pro:size=12
-URxvt.italicFont: xft:Hack:size=12,xft:DejaVuSans:size=12,xft:Source Code Pro:size=12
-URxvt.boldItalicFont: xft:Hack:size=12,xft:DejaVuSans:size=12,xft:Source Code Pro:size=12
+! Noto Color Emoji contains emojis
+URxvt.font: xft:Hack:size=12,xft:DejaVuSans:size=12,xft:Noto Color Emoji:size=12
+URxvt.boldFont: xft:Hack:size=12,xft:DejaVuSans:size=12,xft:Noto Color Emoji:size=12
+URxvt.italicFont: xft:Hack:size=12,xft:DejaVuSans:size=12,xft:Noto Color Emoji:size=12
+URxvt.boldItalicFont: xft:Hack:size=12,xft:DejaVuSans:size=12,xft:Noto Color Emoji:size=12
 
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
