@@ -20,8 +20,8 @@ default_floating_border none
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-# font pango:DejaVu Sans Mono 8
-font pango:Hack Nerd Font 10
+# font pango:DejaVu Sans Mono, FontAwesome 10
+font pango:Hack Nerd Font 12
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -236,5 +236,5 @@ bar {
     urgent_workspace   #EC69A0 $peach $text
     binding_mode       #b691d3 #A07CBC $text
   }
-  status_command i3status
+  status_command i3status-rs ~/.config/i3status-rust/config.toml
 }
