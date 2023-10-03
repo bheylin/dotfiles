@@ -1,4 +1,4 @@
-theme "catppuccin_mocha"
+theme "catppuccin-mocha"
 default_layout "stktab"
 default_mode "locked"
 default_shell "fish"
