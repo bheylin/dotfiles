@@ -193,6 +193,7 @@ set $mauve     #cba6f7
 set $red       #f38ba8
 set $maroon    #eba0ac
 set $peach     #fab387
+set $yellow    #f9e2af
 set $green     #a6e3a1
 set $teal      #94e2d5
 set $sky       #89dceb
@@ -213,10 +214,10 @@ set $mantle    #181825
 set $crust     #11111b
 
 # class                  border    bground   text       indicator  child_border
-client.focused           $blue     $blue     $base      $rosewater $lavender
-client.focused_inactive  $blue     $surface2 $blue      $rosewater $overlay0
+client.focused           $green    $green    $mantle    $rosewater $lavender
+client.focused_inactive  $lavender $lavender $mantle    $rosewater $overlay0
 client.unfocused         $overlay0 $surface0 $text      $rosewater $overlay0
-client.urgent            $peach    $base     $peach     $overlay0  $peach
+client.urgent            $peach    $peach    $mantle    $overlay0  $peach
 client.placeholder       $overlay0 $base     $text      $overlay0  $overlay0
 client.background        $base
 
@@ -229,9 +230,9 @@ bar {
     statusline $text
     separator  $surface2
 
-    focused_workspace  $blue $blue $surface1
-    active_workspace   $blue $surface2 $blue
-    inactive_workspace $surface1 $surface1 $blue
+    focused_workspace  $green $green $mantle
+    active_workspace   $green $lavender $mantle
+    inactive_workspace $overlay0 $surface0 $text
     urgent_workspace   #EC69A0 $peach $text
     binding_mode       #b691d3 #A07CBC $text
   }
