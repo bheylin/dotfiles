@@ -1,0 +1,34 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "ctp-mocha"
+
+[icons]
+icons = "awesome4"
+
+[[block]]
+block = "battery"
+format = " $icon $percentage "
+
+[[block]]
+block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "time"
+interval = 5
+format = " $icon $timestamp.datetime(f:'%a %b %d %R') "
+
+[[block]]
+block = "dnf"
+interval = 1800
+format = " $icon $count.eng(w:1) updates ☢️"
+format_singular = " $icon ☢️"
+format_up_to_date = " $icon "
+critical_updates_regex = "(linux|linux-lts|linux-zen)"
+
+[[block]]
+block = "net"
+format = " $icon {$signal_strength $ssid $frequency|Wired connection} via $device "
