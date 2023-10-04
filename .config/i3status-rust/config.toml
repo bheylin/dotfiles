@@ -17,6 +17,22 @@ button = "left"
 cmd = "pavucontrol"
 
 [[block]]
+block = "toggle"
+format = " ☀️ $icon "
+command_state = "brightnessctl get | rg 255"
+command_on = "brightnessctl set 255"
+command_off = "brightnessctl set 100"
+interval = 5
+
+[[block]]
+block = "toggle"
+format = " 🖥️ $icon "
+command_state = "xrandr | rg 'DisplayPort-1 connected 3840'"
+command_on = "xrandr --output DisplayPort-1 --above eDP --auto"
+command_off = "xrandr --output DisplayPort-1 --above eDP --off"
+interval = 5
+
+[[block]]
 block = "time"
 interval = 5
 format = " $icon $timestamp.datetime(f:'%a %b %d %R') "
@@ -24,8 +40,8 @@ format = " $icon $timestamp.datetime(f:'%a %b %d %R') "
 [[block]]
 block = "dnf"
 interval = 1800
-format = " $icon $count.eng(w:1) updates ☢️"
-format_singular = " $icon ☢️"
+format = " ☢️ $count.eng(w:1) updates "
+format_singular = " ☢️ 1 update "
 format_up_to_date = " $icon "
 critical_updates_regex = "(linux|linux-lts|linux-zen)"
 
