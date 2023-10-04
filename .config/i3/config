@@ -214,10 +214,10 @@ set $mantle    #181825
 set $crust     #11111b
 
 # class                  border    bground   text       indicator  child_border
-client.focused           $green    $green    $mantle    $rosewater $lavender
+client.focused           $peach    $peach    $mantle    $rosewater $lavender
 client.focused_inactive  $lavender $lavender $mantle    $rosewater $overlay0
 client.unfocused         $overlay0 $surface0 $text      $rosewater $overlay0
-client.urgent            $peach    $peach    $mantle    $overlay0  $peach
+client.urgent            $red      $red      $mantle    $overlay0  $peach
 client.placeholder       $overlay0 $base     $text      $overlay0  $overlay0
 client.background        $base
 
@@ -230,8 +230,8 @@ bar {
     statusline $text
     separator  $surface2
 
-    focused_workspace  $green $green $mantle
-    active_workspace   $green $lavender $mantle
+    focused_workspace  $peach $peach $mantle
+    active_workspace   $lavender $lavender $mantle
     inactive_workspace $overlay0 $surface0 $text
     urgent_workspace   #EC69A0 $peach $text
     binding_mode       #b691d3 #A07CBC $text
