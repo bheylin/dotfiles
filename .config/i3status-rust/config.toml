@@ -40,8 +40,8 @@ format = " $icon $timestamp.datetime(f:'%a %b %d %R') "
 [[block]]
 block = "dnf"
 interval = 1800
-format = " ☢️ $count.eng(w:1) updates "
-format_singular = " ☢️ 1 update "
+format = " 🦺 $count.eng(w:1) updates "
+format_singular = " 🦺 1 update "
 format_up_to_date = " $icon "
 critical_updates_regex = "(linux|linux-lts|linux-zen)"
 
