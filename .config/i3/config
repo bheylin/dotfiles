@@ -70,7 +70,9 @@ bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '
 bindsym $mod+Right workspace next_on_output
 bindsym $mod+Left workspace prev_on_output
 
-bindsym $mod+Up focus output next
+bindsym $mod+Up focus output DisplayPort-1
+bindsym $mod+Down focus output eDP
+
 # create a new workspace choosing the next available index
 bindsym $mod+n exec --no-startup-id nu ~/.config/i3/new_workspace.nu
 bindsym $mod+Shift+o move workspace to output next
