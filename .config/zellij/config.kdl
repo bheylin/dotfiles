@@ -123,8 +123,8 @@ keybinds clear-defaults=true {
         bind "Alt Right" { MoveFocus "Right"; }
         bind "Alt Down" { MoveFocus "Down"; }
         bind "Alt Up" { MoveFocus "Up"; }
-        // bind "Alt [" { PreviousSwapLayout; }
-        // bind "Alt ]" { NextSwapLayout; }
+        bind "Alt {" { PreviousSwapLayout; }
+        bind "Alt }" { NextSwapLayout; }
         bind "Alt 1" { GoToTab 1; SwitchToMode "Normal"; }
         bind "Alt 2" { GoToTab 2; SwitchToMode "Normal"; }
         bind "Alt 3" { GoToTab 3; SwitchToMode "Normal"; }
