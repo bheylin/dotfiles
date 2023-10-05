@@ -40,11 +40,7 @@ format = " $icon $timestamp.datetime(f:'%a %b %d %R') "
 [[block]]
 block = "dnf"
 interval = 1800
-format = " 🦺 $count.eng(w:1) updates "
-format_singular = " 🦺 1 update "
-format_up_to_date = " $icon "
+format = " 🦺 $count.eng(w:1) "
+format_singular = " 🦺 "
+format_up_to_date = ""
 critical_updates_regex = "(linux|linux-lts|linux-zen)"
-
-[[block]]
-block = "net"
-format = " $icon {$signal_strength $ssid $frequency|Wired connection} via $device "
