@@ -1,3 +1,5 @@
+alias cg="cargo"
+alias zj="zellij"
 alias gpp="git pull --rebase"
 alias gst="git st -s"
 alias lg="lazygit"
