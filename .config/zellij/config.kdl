@@ -113,10 +113,9 @@ keybinds clear-defaults=true {
         bind "Alt z" { SwitchToMode "Locked"; }
         bind "Alt q" { Quit; }
         bind "Alt n" { NewPane; }
-        // bind "Alt [" { PreviousSwapLayout; }
-        // bind "Alt ]" { NextSwapLayout; }
     }
     shared {
+        bind "Alt l" { Clear; }
         bind "Alt [" { GoToPreviousTab; }
         bind "Alt ]" { GoToNextTab; }
         bind "Alt Left" { MoveFocus "Left"; }
