@@ -43,4 +43,4 @@ interval = 1800
 format = " 🦺 $count.eng(w:1) "
 format_singular = " 🦺 "
 format_up_to_date = ""
-critical_updates_regex = "(linux|linux-lts|linux-zen)"
+critical_updates_regex = "(linux|linux-lts|linux-zen|firefox)"
