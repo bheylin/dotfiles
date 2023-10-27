@@ -25,6 +25,8 @@ language-servers = ["rust-analyzer"]
 
 [language-server.rust-analyzer.config]
 checkOnSave = { enabled = true, command = "check" }
+# checkOnSave = { extraArgs = ["---profile", "rust-analyzer"] }
+# check = { extraArgs = ["---profile", "rust-analyzer"] }
 inlayHints.parameterHints.enable = false
 inlayHints.closingBraceHints.minLines = 10
 # workspace.symbol.search.kind = "all_symbols"

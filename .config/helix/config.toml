@@ -10,7 +10,7 @@ insert-final-newline = true
 line-number = "relative"
 middle-click-paste = false
 mouse = false
-rulers = [100]
+rulers = [100, 160]
 scrolloff = 10
 text-width = 160
 true-color = true
@@ -46,6 +46,9 @@ right = [
   "file-encoding",
   "position",
   "total-line-numbers",
+  "separator",
+  "register",
+  "separator",
   "primary-selection-length",
   "selections",
 ]
