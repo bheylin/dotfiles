@@ -132,11 +132,6 @@ let light_theme = {
     shape_vardecl: purple
 }
 
-# External completer example
-# let carapace_completer = {|spans|
-#     carapace $spans.0 nushell $spans | from json
-# }
-
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
     show_banner: false # true or false to enable or disable the welcome banner at startup
@@ -148,10 +143,6 @@ $env.config = {
 
     rm: {
         always_trash: false # always act as if -t was given. Can be overridden with -p
-    }
-
-    cd: {
-        abbreviations: false # allows `cd s/o/f` to expand to `cd some/other/folder`
     }
 
     table: {
