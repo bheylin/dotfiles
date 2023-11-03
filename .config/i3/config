@@ -78,6 +78,7 @@ bindsym $mod+n exec --no-startup-id nu ~/.config/i3/new_workspace.nu
 bindsym $mod+Shift+o move workspace to output next
 # gather all workspaces to the primary output
 bindsym $mod+Shift+g exec --no-startup-id nu ~/.config/i3/gather_workspaces.nu
+bindsym $mod+Shift+b exec --no-startup-id nu ~/.config/i3/banish_other_workspaces.nu
 
 bindsym $mod+Ctrl+Left focus left
 bindsym $mod+Ctrl+Down focus down
