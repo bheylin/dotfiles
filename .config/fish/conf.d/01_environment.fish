@@ -11,6 +11,7 @@ if command -sq rg
 end
 
 fish_add_path -U ~/.cargo/bin 
+fish_add_path -m ~/.local/bin
 
 set -gx PGHOST /run/postgresql
 set -gx PGPORT 5432
