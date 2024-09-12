@@ -8,6 +8,11 @@
     pp = pull --prune
     st = status
     sw = switch
+    stash = 'stash --all'
+
+[commit]
+    # Add the diff to the editor buffer when writing a commit message
+    verbose = true
 
 [core]
     pager = delta
@@ -84,12 +89,16 @@
 
 [diff]
     colorMoved = default
+    algorithm = histogram
 
 [difftool]
     prompt = false
     
 [difftool "difftastic"]
     cmd = difft "$LOCAL" "$REMOTE"
+
+[help]
+    autocorrect = prompt
 
 [init]
     defaultBranch = main
@@ -98,7 +107,7 @@
     diffFilter = delta --color-only --features=interactive
     
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 
 [pager]
     difftool = true
@@ -109,6 +118,11 @@
 
 [pull]
     rebase = true
+
+[rerere]
+    # reuse recovered resolution: remembers how you resolved merge conflicts during a git rebase
+    # and automatically resolves them for the subsequent commit rebases during this session
+    enabled = true
 
 [includeIf "gitdir:~/.cfg/**"]
     path = ~/.cfg/.gitconfig

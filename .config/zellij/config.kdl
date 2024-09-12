@@ -1,5 +1,5 @@
 theme "catppuccin-mocha"
-default_layout "stktab"
+default_layout "12"
 default_mode "locked"
 default_shell "fish"
 scroll_buffer_size 10000

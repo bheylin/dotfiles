@@ -1,11 +1,10 @@
 alias cg="cargo"
-alias zj="zellij"
 alias gpp="git pull --rebase"
 alias gst="git st -s"
 alias lg="lazygit"
 alias ll="ls -l"
 alias ls="eza"
-alias z="zoxide"
+alias zj="zellij"
 
 # git repo that tracks personal dotfiles
 alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'

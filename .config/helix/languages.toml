@@ -21,7 +21,15 @@ text-width = 160
 [[language]]
 name = "rust"
 text-width = 160
-language-servers = ["rust-analyzer"]
+language-servers = ["scls", "rust-analyzer"]
+
+[language-server.scls]
+command = "simple-completion-language-server"
+config = { max_completion_items = 20, snippets_first = false }
+
+[language-server.scls.environment]
+RUST_LOG = "deubg,simple-completion-language-server=debug"
+LOG_FILE = "/tmp/completion.log"
 
 [language-server.rust-analyzer.config]
 checkOnSave = { enabled = true, command = "check" }
@@ -63,4 +71,5 @@ text-width = 160
 
 [[language]]
 name = "sql"
-text-width = 100
+indent = { tab-width = 2, unit = "  " }
+text-width = 160
