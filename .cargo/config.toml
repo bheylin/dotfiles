@@ -5,3 +5,27 @@ rustflags = ["-C", "link-arg=-fuse-ld=/usr/bin/mold"]
 [bulid]
 jobs = 8
 incremental = true
+
+[profile.dev]
+debug = "limited"
+split-debuginfo = "unpacked"
+lto = "off"
+# Compiler/linker speed improvements
+panic = "abort"
+debug-assertions = true
+overflow-checks = false
+
+[profile.dev.package."*"]
+debug = "limited"
+split-debuginfo = "unpacked"
+# Compiler/linker speed improvements
+debug-assertions = true
+overflow-checks = false
+
+[profile.test]
+debug = "limited"
+split-debuginfo = "unpacked"
+lto = "off"
+# Compiler/linker speed improvements
+debug-assertions = false
+overflow-checks = false

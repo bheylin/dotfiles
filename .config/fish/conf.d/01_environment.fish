@@ -1,9 +1,9 @@
 set fish_greeting ''
 set SHELL (which fish)
 
-set -gx BROWSER /var/lib/flatpak/exports/bin/engineer.atlas.Nyxt
+set -gx BROWSER /usr/bin/firefox
 set -gx EDITOR hx
-set -gx TERMINAL rxvt
+set -gx TERMINAL ghostty
 
 if command -sq rg
     set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden'

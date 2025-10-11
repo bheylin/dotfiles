@@ -21,15 +21,17 @@ text-width = 160
 [[language]]
 name = "rust"
 text-width = 160
-language-servers = ["scls", "rust-analyzer"]
+language-servers = ["rust-analyzer"]
+soft-wrap.enable = false
+# language-servers = ["scls", "rust-analyzer"]
 
-[language-server.scls]
-command = "simple-completion-language-server"
-config = { max_completion_items = 20, snippets_first = false }
+# [language-server.scls]
+# command = "simple-completion-language-server"
+# config = { max_completion_items = 20, snippets_first = false }
 
-[language-server.scls.environment]
-RUST_LOG = "deubg,simple-completion-language-server=debug"
-LOG_FILE = "/tmp/completion.log"
+# [language-server.scls.environment]
+# RUST_LOG = "deubg,simple-completion-language-server=debug"
+# LOG_FILE = "/tmp/completion.log"
 
 [language-server.rust-analyzer.config]
 checkOnSave = { enabled = true, command = "check" }
@@ -39,9 +41,9 @@ inlayHints.parameterHints.enable = false
 inlayHints.closingBraceHints.minLines = 10
 # workspace.symbol.search.kind = "all_symbols"
 # workspace.symbol.search.limit = 65536
-procMacro.enable = false
-diagnostics.experimental.enable = false
-diagnostics.disabled = ["unresolved-proc-macro"]
+# procMacro.enable = false
+# dignostics.experimental.enable = false
+# diagnostics.disabled = ["unresolved-proc-macro"]
 
 [language.debugger]
 command = "codelldb"

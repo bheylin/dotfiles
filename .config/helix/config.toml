@@ -1,15 +1,16 @@
-theme = "catppuccin_mocha"
+theme = "nightfox"
 
 [editor]
 auto-completion = true
 bufferline = "always"
 color-modes = true
 cursorline = true
+end-of-line-diagnostics = "hint"
 idle-timeout = 200
 insert-final-newline = true
 line-number = "relative"
 middle-click-paste = false
-mouse = false
+mouse = true
 rulers = [100, 160]
 scrolloff = 10
 text-width = 160
@@ -22,6 +23,9 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.inline-diagnostics]
+cursor-line = "error"
 
 [editor.lsp]
 auto-signature-help = true
@@ -41,13 +45,13 @@ wrap-at-text-width = true
 wrap-indicator = "↪"
 
 [editor.statusline]
+left = ["mode", "spinner", "current-working-directory", "separator", "file-name", "read-only-indicator", "total-line-numbers"]
+center = ["version-control", "register"]
 right = [
   "diagnostics",
+  "workspace-diagnostics",
   "file-encoding",
   "position",
-  "total-line-numbers",
-  "separator",
-  "register",
   "separator",
   "primary-selection-length",
   "selections",
@@ -65,8 +69,8 @@ space = "·"
 tab = "→"
 
 [keys.normal]
-C-down = "shrink_selection"
-C-left = "select_prev_sibling"
-C-right = "select_next_sibling"
-C-up = "expand_selection"
 X = "extend_line_above"
+# Print the current line's git blame information to the statusline.
+space.B = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
+# Insert current date
+space.Z = ":pipe date -u +'%%Y-%%m-%%d'"

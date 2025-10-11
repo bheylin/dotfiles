@@ -50,7 +50,8 @@ floating_modifier $mod
 smart_borders on
 
 # start a terminal
-bindsym $mod+Return exec rxvt
+# bindsym $mod+Return exec rxvt
+bindsym $mod+Return exec ghostty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -216,7 +217,7 @@ set $mantle    #181825
 set $crust     #11111b
 
 # class                  border    bground   text       indicator  child_border
-client.focused           $peach    $peach    $mantle    $rosewater $lavender
+client.focused           $peach    $peach    $mantle    $rosewater $peach
 client.focused_inactive  $lavender $lavender $mantle    $rosewater $overlay0
 client.unfocused         $overlay0 $surface0 $text      $rosewater $overlay0
 client.urgent            $red      $red      $mantle    $overlay0  $peach
@@ -238,5 +239,5 @@ bar {
     urgent_workspace   #EC69A0 $peach $text
     binding_mode       #b691d3 #A07CBC $text
   }
-  status_command i3status-rs ~/.config/i3status-rust/config.toml
+	status_command i3status
 }
