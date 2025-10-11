@@ -1,0 +1,91 @@
+theme = Nightfox
+gtk-titlebar = false
+window-decoration = none
+shell-integration = fish
+
+# goto tab
+keybind = alt+one=goto_tab:1
+keybind = alt+two=goto_tab:2
+keybind = alt+three=goto_tab:3
+keybind = alt+four=goto_tab:4
+keybind = alt+five=goto_tab:5
+keybind = alt+six=goto_tab:6
+keybind = alt+seven=goto_tab:7
+keybind = alt+eight=goto_tab:8
+keybind = alt+nine=goto_tab:9
+
+# move to tab
+# keybind = ctrl+alt+page_down=next_tab
+# keybind = ctrl+alt+page_up=previous_tab
+keybind = ctrl+alt+tab=next_tab
+keybind = ctrl+alt+super+page_down=move_tab:1
+keybind = ctrl+alt+super+page_up=move_tab:-1
+keybind = ctrl+alt+t=new_tab
+keybind = ctrl+alt+tab=unbind
+
+# create split
+keybind = ctrl+alt+v=new_split:right
+keybind = ctrl+alt+s=new_split:down
+
+# goto split
+keybind = ctrl+alt+left=goto_split:left
+keybind = ctrl+alt+down=goto_split:bottom
+keybind = ctrl+alt+up=goto_split:top
+keybind = ctrl+alt+right=goto_split:right
+keybind = super+ctrl+right_bracket=unbind
+keybind = super+ctrl+left_bracket=unbind
+
+# resize split
+keybind = ctrl+alt+super+up=resize_split:up,50
+keybind = ctrl+alt+super+left=resize_split:left,50
+keybind = ctrl+alt+super+down=resize_split:down,50
+keybind = ctrl+alt+super+right=resize_split:right,50
+keybind = ctrl+alt+super+equal=equalize_splits
+
+# zoom split
+keybind = ctrl+alt+enter=toggle_split_zoom
+
+# screen
+keybind = ctrl+alt+k=clear_screen
+
+# window
+keybind = ctrl+shift+q=unbind
+keybind = ctrl+shift+n=unbind
+keybind = ctrl+alt+w=close_surface
+keybind = alt+f4=unbind
+keybind = ctrl+alt+super+d=toggle_tab_overview
+
+# copy paste
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = shift+insert=paste_from_selection
+keybind = ctrl+shift+a=select_all
+keybind = ctrl+shift+c=copy_to_clipboard
+
+# scroll
+keybind = ctrl+alt+end=scroll_to_bottom
+keybind = ctrl+alt+home=scroll_to_top
+keybind = ctrl+alt+page_up=scroll_page_up
+keybind = ctrl+alt+page_down=scroll_page_down
+keybind = ctrl+alt+super+o=write_scrollback_file:open
+keybind = ctrl+alt+super+p=write_scrollback_file:paste
+
+# font size
+keybind = ctrl+alt+equal=increase_font_size:1
+keybind = ctrl+alt+minus=decrease_font_size:1
+keybind = ctrl+alt+plus=increase_font_size:1
+keybind = ctrl+alt+zero=reset_font_size
+
+# config
+keybind = ctrl+comma=unbind
+keybind = ctrl+alt+comma=reload_config
+
+keybind = ctrl+shift+up=adjust_selection:up
+keybind = ctrl+shift+down=adjust_selection:down
+keybind = ctrl+shift+left=adjust_selection:left
+keybind = ctrl+shift+right=adjust_selection:right
+
+keybind = ctrl+shift+page_down=jump_to_prompt:1
+keybind = ctrl+shift+page_up=jump_to_prompt:-1
+
+keybind = ctrl+shift+i=inspector:toggle
+
