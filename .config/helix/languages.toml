@@ -1,16 +1,11 @@
 [[language]]
-name = "markdown"
-indent = { tab-width = 4, unit = "    " }
+name = "c"
 text-width = 160
+soft-wrap.enable = false
 
 [[language]]
 name = "html"
 indent = { tab-width = 2, unit = "  " }
-text-width = 160
-
-[[language]]
-name = "nu"
-indent = { tab-width = 2, unit = "    " }
 text-width = 160
 
 [[language]]
@@ -19,9 +14,30 @@ indent = { tab-width = 4, unit = "    " }
 text-width = 160
 
 [[language]]
+name = "markdown"
+indent = { tab-width = 4, unit = "    " }
+text-width = 160
+
+[[language]]
+name = "nu"
+indent = { tab-width = 2, unit = "    " }
+text-width = 160
+
+[[language]]
 name = "rust"
 text-width = 160
 language-servers = ["rust-analyzer"]
+soft-wrap.enable = false
+
+[[language]]
+name = "sql"
+indent = { tab-width = 2, unit = "  " }
+text-width = 160
+soft-wrap.enable = false
+
+[[language]]
+name = "toml"
+text-width = 160
 soft-wrap.enable = false
 
 [language-server.rust-analyzer.config]
@@ -45,16 +61,3 @@ name = "binary"
 [language.debugger.templates.args]
 program = "{0}"
 runInTerminal = true
-
-[[language]]
-name = "toml"
-text-width = 160
-
-[[language]]
-name = "c"
-text-width = 160
-
-[[language]]
-name = "sql"
-indent = { tab-width = 2, unit = "  " }
-text-width = 160
