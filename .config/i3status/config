@@ -1,0 +1,71 @@
+# Each block is a pill: a colored icon cap, then the value on $surface0.
+# The caps and icons name Hack Nerd Font, so they keep its metrics while the value
+# uses the bar's proportional font.
+#
+# Pango paints a span's background to the height of the line, and Noto Sans at 12pt
+# sets that height. A cap glyph fills only its own font's unrounded height, while
+# Pango rounds each font's height up to whole pixels, so a cap large enough to fill
+# the line would also make the line taller. line_height='0.5' keeps the caps out of
+# the line's height, which leaves them free to be sized to it. size and rise are in
+# 1/1024 pt: 14.6pt, lowered 0.24pt. They were measured at 96 DPI with medium hinting,
+# and changing the bar font or its size means measuring them again.
+# The colors are Catppuccin Mocha, matching the palette in ~/.config/i3/config.
+# status-wrapper.py turns off i3bar's separators, because the pills' rounded edges
+# already separate the blocks.
+
+general {
+	output_format = "i3bar"
+	colors = false
+	markup = pango
+	interval = 5
+}
+
+order += "load"
+order += "cpu_temperature 0"
+order += "wireless wlp2s0"
+order += "volume master"
+order += "battery 0"
+order += "time"
+
+load {
+	format = "<span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#f9e2af'></span><span font_family='Hack Nerd Font' background='#f9e2af' foreground='#181825'>󰍛 </span><span background='#313244' foreground='#cdd6f4'> %5min</span><span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#313244'></span>"
+}
+
+# k10temp is the CPU's own sensor. The hwmon number can change between boots,
+# so the path names the PCI device and globs the hwmon directory.
+cpu_temperature 0 {
+	format = "<span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#f38ba8'></span><span font_family='Hack Nerd Font' background='#f38ba8' foreground='#181825'>󰔏 </span><span background='#313244' foreground='#cdd6f4'> %degrees°C</span><span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#313244'></span>"
+	path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon*/temp1_input"
+}
+
+wireless wlp2s0 {
+	format_up = "<span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#a6e3a1'></span><span font_family='Hack Nerd Font' background='#a6e3a1' foreground='#181825'>󰖩 </span><span background='#313244' foreground='#cdd6f4'> %essid</span><span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#313244'></span>"
+	format_down = "<span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#a6e3a1'></span><span font_family='Hack Nerd Font' background='#a6e3a1' foreground='#181825'>󰖪 </span><span background='#313244' foreground='#cdd6f4'> Disconnected</span><span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#313244'></span>"
+}
+
+volume master {
+	format = "<span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#89b4fa'></span><span font_family='Hack Nerd Font' background='#89b4fa' foreground='#181825'>󰕾 </span><span background='#313244' foreground='#cdd6f4'> %volume</span><span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#313244'></span>"
+	format_muted = "<span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#89b4fa'></span><span font_family='Hack Nerd Font' background='#89b4fa' foreground='#181825'>󰝟 </span><span background='#313244' foreground='#cdd6f4'> Muted</span><span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#313244'></span>"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+# %status is the icon, so each state gets a glyph.
+battery 0 {
+	last_full_capacity = true
+	format = "<span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#94e2d5'></span><span font_family='Hack Nerd Font' background='#94e2d5' foreground='#181825'>%status </span><span background='#313244' foreground='#cdd6f4'> %percentage</span><span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#313244'></span>"
+	format_down = "No Battery"
+	status_chr = "󰂄"
+	status_bat = "󰁹"
+	status_unk = "󰂑"
+	status_full = "󰁹"
+	status_idle = "󰚥"
+	path = "/sys/class/power_supply/BAT%d/uevent"
+	low_threshold = 10
+	integer_battery_capacity = true
+}
+
+time {
+	format = "<span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#cba6f7'></span><span font_family='Hack Nerd Font' background='#cba6f7' foreground='#181825'>󰥔 </span><span background='#313244' foreground='#cdd6f4'> %b %d %H:%M %Z (UTC %z)</span><span font_family='Hack Nerd Font' size='15000' rise='-250' line_height='0.5' foreground='#313244'></span>"
+}

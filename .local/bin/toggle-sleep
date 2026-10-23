@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PID_FILE="${HOME}/.config/i3/sleep-inhibit.pid"
+
+is_inhibited() {
+    [[ -f "$PID_FILE" ]] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null
+}
+
+if is_inhibited; then
+    kill "$(cat "$PID_FILE")" 2>/dev/null || true
+    rm -f "$PID_FILE"
+    xset +dpms
+    xset s on
+else
+    xset -dpms
+    xset s off
+    systemd-inhibit \
+        --what=sleep:idle \
+        --who="i3 toggle-sleep" \
+        --why="Sleep mode disabled by user" \
+        --mode=block \
+        sleep infinity &
+    disown
+    echo $! > "$PID_FILE"
+fi
+
+killall -SIGUSR1 i3status
