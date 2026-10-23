@@ -18,7 +18,9 @@ focus_wrapping no
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono, FontAwesome 10
-font pango:Hack Nerd Font 12
+# Noto Sans draws the text, and the status bar's icons, which Noto Sans lacks,
+# fall back to Hack Nerd Font.
+font pango:Noto Sans, Hack Nerd Font 12
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -38,12 +40,30 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xsetroot -solid "#222E45"
 exec --no-startup-id xbanish
 
+# Confine the pointer to the monitor it is on, so it cannot wander between
+# screens. Pointer barriers do not block warps, so mouse_warping still hands
+# the pointer to whichever output takes keyboard focus.
+exec --no-startup-id pointerwall
+bindsym $mod+Shift+p exec --no-startup-id pkill -USR1 -x pointerwall
+
+# Rebuild the project workspaces: a zellij session per project and its LibreWolf windows.
+exec --no-startup-id ~/.config/i3/restore_workspaces.py
+bindsym $mod+Shift+r exec --no-startup-id ~/.config/i3/restore_workspaces.py
+mouse_warping output
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Use brightnessctl to adjust the screen backlight.
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+
+# Area screenshot: drag to select a region, save a timestamped PNG and copy it to the clipboard.
+bindsym Print exec --no-startup-id ~/.config/i3/screenshot.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -85,14 +105,23 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# alternatively, you can use the cursor keys:
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+s split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -100,13 +129,18 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+workspace_layout tabbed
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# open these applications floating
+for_window [instance="org.localsend.localsend_app"] floating enable, resize set 50 ppt 60 ppt, move position center
+for_window [instance="keepassxc"] floating enable, resize set 50 ppt 60 ppt, move position center
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -154,21 +188,24 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-set $system System: reload [c]onfig [r]estart [e]xit [l]ock
+set $system i3: [r]estart [e]xit reload-[c]onfig [l]ock toggle-[s]leep
 bindsym $mod+Shift+s mode "$system"
 
 mode "$system" {
-  # reload the configuration file
-  bindsym c reload, mode "default"
-
   # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
   bindsym r restart, mode "default"
 
   # exit i3 (logs you out of your X session)
   bindsym e exit, mode "default"
 
+  # reload the configuration file
+  bindsym c reload, mode "default"
+
   # lock laptop
   bindsym l exec i3lock, mode "default"
+
+  # toggle sleep-mode on/off
+  bindsym s exec toggle-sleep, mode "default"
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -226,5 +263,5 @@ bar {
     urgent_workspace   #EC69A0 $peach $text
     binding_mode       #b691d3 #A07CBC $text
   }
-	status_command i3status
+	status_command python3 ~/.config/i3/status-wrapper.py
 }
