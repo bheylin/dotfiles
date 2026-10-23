@@ -73,9 +73,6 @@ smart_borders on
 # bindsym $mod+Return exec rxvt
 bindsym $mod+Return exec ghostty
 
-# kill focused window
-bindsym $mod+q kill
-
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10'"
 # A more modern dmenu replacement is rofi:
@@ -120,23 +117,36 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# split in horizontal orientation
-bindsym $mod+s split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
 workspace_layout tabbed
-# change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-# bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# Window actions that are rare, or costly when pressed by mistake, wait behind the $window mode.
+# Each key inside it is the one the action had after $mod before the mode existed.
+set $window window: [q]kill [f]ullscreen split-[s]ide split-[v]ertical tabbed-[w] floating-[space]
+bindsym $mod+Shift+w mode "$window"
+
+mode "$window" {
+  # kill focused window
+  bindsym q kill, mode "default"
+
+  # enter fullscreen mode for the focused container
+  bindsym f fullscreen toggle, mode "default"
+
+  # split in horizontal orientation
+  bindsym s split h, mode "default"
+
+  # split in vertical orientation
+  bindsym v split v, mode "default"
+
+  # change container layout to tabbed
+  bindsym w layout tabbed, mode "default"
+
+  # toggle tiling / floating
+  bindsym space floating toggle, mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+Shift+w mode "default"
+}
 
 # open these applications floating
 for_window [instance="org.localsend.localsend_app"] floating enable, resize set 50 ppt 60 ppt, move position center
