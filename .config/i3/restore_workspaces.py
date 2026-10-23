@@ -93,6 +93,20 @@ def browser_workspaces():
     return [workspace for workspace, _, _ in PROJECTS] + BROWSER_WORKSPACES
 
 
+def name_numbered_workspaces():
+    """Renames a workspace named only by its number, such as the `1` i3 opens at login, to the
+    full name of the workspace with that number. Otherwise `$mod+1` would go to the bare `1`
+    rather than to `1: Office`."""
+    output = subprocess.run(
+        ["i3-msg", "-t", "get_workspaces"], capture_output=True, text=True, check=True
+    ).stdout
+    existing = {workspace["name"] for workspace in json.loads(output)}
+    for workspace in browser_workspaces():
+        number = workspace.split(": ", 1)[0]
+        if number in existing and workspace not in existing:
+            i3(f'rename workspace "{number}" to "{workspace}"')
+
+
 def move_windows():
     for window, workspace, _ in windows(tree()):
         target = target_workspace(window)
@@ -143,6 +157,7 @@ def main():
 
     for _ in range(SECONDS_TO_WAIT):
         time.sleep(1)
+        name_numbered_workspaces()
         move_windows()
         for workspace in browser_workspaces():
             put_browsers_side_by_side(workspace)
