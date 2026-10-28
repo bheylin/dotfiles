@@ -47,8 +47,8 @@ exec --no-startup-id pointerwall
 bindsym $mod+Shift+p exec --no-startup-id pkill -USR1 -x pointerwall
 
 # Rebuild the project workspaces: a zellij session per project and its LibreWolf windows.
+# The $system mode's [w]orkspaces key runs it again.
 exec --no-startup-id ~/.config/i3/restore_workspaces.py
-bindsym $mod+Shift+r exec --no-startup-id ~/.config/i3/restore_workspaces.py
 mouse_warping output
 
 # Use pactl to adjust volume in PulseAudio.
@@ -174,6 +174,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# Workspace 1 goes on the large monitor when it's attached, and on the laptop screen otherwise.
+# The rule names a number, so it holds for `1` at login and for `1: Office` once renamed.
+workspace $ws1 output DisplayPort-1 eDP
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -198,7 +202,7 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-set $system i3: [r]estart [e]xit reload-[c]onfig [l]ock toggle-[s]leep
+set $system i3: [r]estart [e]xit reload-[c]onfig [l]ock toggle-[s]leep restore-[w]orkspaces
 bindsym $mod+Shift+s mode "$system"
 
 mode "$system" {
@@ -216,6 +220,9 @@ mode "$system" {
 
   # toggle sleep-mode on/off
   bindsym s exec toggle-sleep, mode "default"
+
+  # rebuild the project workspaces, as at login
+  bindsym w exec --no-startup-id ~/.config/i3/restore_workspaces.py, mode "default"
 
   bindsym Return mode "default"
   bindsym Escape mode "default"

@@ -4,35 +4,67 @@ layout {
             plugin location="zellij:compact-bar"
         }
         children
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
     }
 
-    tab name="Test" {
+    tab name="Assistant" focus=true {
         pane split_direction="vertical" {
             pane stacked=true {
                 pane
-                pane
+                pane size="50%"
             }
+        }
+    }
+
+    tab name="Edit" {
+        pane split_direction="vertical" {
             pane stacked=true {
                 pane
+                pane size="50%"
+            }
+        }
+    }
+
+    tab name="VCS" {
+        pane split_direction="vertical" {
+            pane stacked=true {
+                pane
+                pane size="50%"
+            }
+        }
+    }
+
+    // A wide monitor makes full-width text hard to read. This caps the first
+    // pane of a two pane tab at a comfortable column and gives the leftover
+    // width to its neighbor. Toggle it with the swap layout keys.
+    //
+    // exact_panes counts every pane in the tab, including the two borderless
+    // plugin bars that default_tab_template adds, so a tab holding two shells
+    // counts as 4. That covers the Assistant and VCS tabs and leaves Edit alone.
+    swap_tiled_layout name="reading-column" {
+        tab exact_panes=4 {
+            pane split_direction="vertical" {
+                pane size="50%"
                 pane
             }
         }
     }
 
-    tab name="Edit" focus=true {
-        pane
-    }
-
-    tab name="Git" {
-        pane split_direction="vertical" {
+    // The Test tab holds four shells, so exact_panes=6 once the bars are
+    // counted. That leaves the Test tab as the only match, and its four shells
+    // move from the two stacks of the tab layout above into one stack of four.
+    // A tab's own layout is the first position in the swap cycle, so this single
+    // entry is enough to toggle back and forth.
+    swap_tiled_layout name="single-stack" {
+        tab exact_panes=6 {
             pane stacked=true {
-                pane command="lazygit" start_suspended=true
-                pane size="20%"
+                pane
+                pane
+                pane
+                pane
             }
         }
-    }
-
-    tab name="Files" {
-        pane
     }
 }

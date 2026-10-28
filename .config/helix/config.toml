@@ -2,7 +2,7 @@ theme = "nightfox"
 
 [editor]
 auto-completion = true
-bufferline = "always"
+bufferline = "never"
 color-modes = true
 cursorline = true
 end-of-line-diagnostics = "hint"

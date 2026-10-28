@@ -2,7 +2,7 @@
 linker = "clang"
 rustflags = ["-C", "link-arg=-fuse-ld=/usr/bin/mold"]
 
-[bulid]
+[build]
 jobs = 8
 incremental = true
 

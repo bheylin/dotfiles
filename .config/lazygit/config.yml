@@ -4,6 +4,8 @@ git:
     pager: delta --dark --paging=never
 
 gui:
+  showIcons: true
+  nerdFontVersion: "3" 
   showFileTree: false
   theme:
     activeBorderColor:

@@ -1,8 +1,19 @@
-theme "catppuccin-mocha"
+theme "nightfox"
 default_layout "12"
 default_mode "locked"
 default_shell "fish"
 scroll_buffer_size 10000
+stacked_pane_list false
+pane_frame_style "full"
+
+// Hand a copied selection to xclip rather than to ghostty over OSC 52. ghostty 1.3.1 sometimes
+// takes the clipboard after an OSC 52 write and then never answers a request for its contents,
+// so a paste into LibreWolf stalls until LibreWolf gives up. xclip always answers.
+copy_command "xclip -selection clipboard"
+
+// // Leave the mouse to ghostty, so Ctrl+click opens an OSC 8 link, such as a `tg refs` breadcrumb.
+// // With mouse mode on, zellij takes every click and ghostty never opens the link.
+// mouse_mode false
 
 plugins {
     tab-bar { path "tab-bar"; }
@@ -18,24 +29,25 @@ keybinds clear-defaults=true {
         bind "Esc" { SwitchToMode "Locked"; }
     }
     locked {
-        bind "Alt z" { SwitchToMode "Normal"; }
+        bind "Ctrl Alt d" { SwitchToMode "Normal"; }
     }
     resize {
-        bind "Left" { Resize "Increase Left"; }
-        bind "Down" { Resize "Increase Down"; }
-        bind "Up" { Resize "Increase Up"; }
-        bind "Right" { Resize "Increase Right"; }
+        bind "h" "Left" { Resize "Increase Left"; }
+        bind "j" "Down" { Resize "Increase Down"; }
+        bind "k" "Up" { Resize "Increase Up"; }
+        bind "l" "Right" { Resize "Increase Right"; }
         bind "a" { Resize "Increase"; }
         bind "x" { Resize "Decrease"; }
     }
     pane {
-        bind "Left" { MoveFocus "Left"; }
-        bind "Right" { MoveFocus "Right"; }
-        bind "Down" { MoveFocus "Down"; }
-        bind "Up" { MoveFocus "Up"; }
+        bind "h" "Left" { MoveFocus "Left"; }
+        bind "j" "Down" { MoveFocus "Down"; }
+        bind "k" "Up" { MoveFocus "Up"; }
+        bind "l" "Right" { MoveFocus "Right"; }
         bind "n" { NewPane; SwitchToMode "Normal"; }
-        bind "d" { NewPane "Down"; SwitchToMode "Normal"; }
-        bind "r" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "u" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "i" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "s" { NewPane "stacked"; SwitchToMode "Normal"; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         bind "z" { TogglePaneFrames; SwitchToMode "Normal"; }
@@ -45,10 +57,10 @@ keybinds clear-defaults=true {
     }
     move {
         bind "n" "Tab" { MovePane; }
-        bind "Left" { MovePane "Left"; }
-        bind "Down" { MovePane "Down"; }
-        bind "Up" { MovePane "Up"; }
-        bind "Right" { MovePane "Right"; }
+        bind "h" "Left" { MovePane "Left"; }
+        bind "j" "Down" { MovePane "Down"; }
+        bind "k" "Up" { MovePane "Up"; }
+        bind "l" "Right" { MovePane "Right"; }
     }
     tab {
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
@@ -69,34 +81,30 @@ keybinds clear-defaults=true {
         bind "Tab" { ToggleTab; }
     }
     scroll {
-        bind "e" { EditScrollback; SwitchToMode "Normal"; }
-        bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
+        bind "e" { EditScrollback; SwitchToMode "Locked"; }
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
         bind "Alt c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "Down" { ScrollDown; }
         bind "Up" { ScrollUp; }
-        bind "Alt f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Alt b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "PageDown" { PageScrollDown; }
+        bind "PageUp" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
-        // uncomment this and adjust key if using copy_on_select=false
-        // bind "Alt c" { Copy; }
     }
     search {
         bind "Alt c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "Down" { ScrollDown; }
         bind "Up" { ScrollUp; }
-        bind "Alt f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Alt b" "PageUp" "Left" "h" { PageScrollUp; }
-        bind "d" { HalfPageScrollDown; }
-        bind "u" { HalfPageScrollUp; }
+        bind "PageDown" { PageScrollDown; }
+        bind "PageUp" { PageScrollUp; }
         bind "n" { Search "down"; }
-        bind "p" { Search "up"; }
+        bind "Shift n" { Search "up"; }
         bind "c" { SearchToggleOption "CaseSensitivity"; }
         bind "w" { SearchToggleOption "Wrap"; }
         bind "o" { SearchToggleOption "WholeWord"; }
     }
     entersearch {
-        bind "Alt c" "Esc" { SwitchToMode "Scroll"; }
+        bind "Esc" { SwitchToMode "Scroll"; }
         bind "Enter" { SwitchToMode "Search"; }
     }
     renametab {
@@ -110,20 +118,25 @@ keybinds clear-defaults=true {
         bind "d" { Detach; }
     }
     shared_except "locked" {
-        bind "Alt z" { SwitchToMode "Locked"; }
+        bind "Alt d" { SwitchToMode "Locked"; }
         bind "Alt q" { Quit; }
-        bind "Alt n" { NewPane; }
     }
     shared {
-        bind "Alt l" { Clear; }
-        bind "Alt [" { GoToPreviousTab; }
-        bind "Alt ]" { GoToNextTab; }
-        bind "Alt Left" { MoveFocus "Left"; }
-        bind "Alt Right" { MoveFocus "Right"; }
-        bind "Alt Down" { MoveFocus "Down"; }
-        bind "Alt Up" { MoveFocus "Up"; }
-        bind "Alt {" { PreviousSwapLayout; }
-        bind "Alt }" { NextSwapLayout; }
+        bind "Ctrl Alt c" { Clear; }
+        bind "Ctrl Alt t" { NewTab;  }
+        bind "Ctrl Alt ," { GoToPreviousTab; }
+        bind "Ctrl Alt ." { GoToNextTab; }
+        bind "Ctrl Alt s" { NewPane "stacked"; }
+        bind "Ctrl Alt u" { NewPane "Down"; }
+        bind "Ctrl Alt i" { NewPane "Right"; }
+        bind "Ctrl Alt w" { CloseFocus; }
+        bind "Ctrl Alt Enter" { ToggleFocusFullscreen; }
+        bind "Ctrl Alt h" "Ctrl Alt Left" { MoveFocus "Left"; }
+        bind "Ctrl Alt j" "Ctrl Alt Down" { MoveFocus "Down"; }
+        bind "Ctrl Alt k" "Ctrl Alt Up" { MoveFocus "Up"; }
+        bind "Ctrl Alt l" "Ctrl Alt Right" { MoveFocus "Right"; }
+        bind "Ctrl Alt [" { PreviousSwapLayout; }
+        bind "Ctrl Alt ]" { NextSwapLayout; }
         bind "Alt 1" { GoToTab 1; }
         bind "Alt 2" { GoToTab 2; }
         bind "Alt 3" { GoToTab 3; }
@@ -133,6 +146,9 @@ keybinds clear-defaults=true {
         bind "Alt 7" { GoToTab 7; }
         bind "Alt 8" { GoToTab 8; }
         bind "Alt 9" { GoToTab 9; }
+        bind "Ctrl Alt /" { EditScrollback; SwitchToMode "Locked"; }
+        bind "Ctrl Alt PageDown" { HalfPageScrollDown; }
+        bind "Ctrl Alt PageUp" { HalfPageScrollUp; }
     }
     shared_except "normal" "locked" {
         bind "Enter" "Esc" { SwitchToMode "Normal"; }
@@ -145,6 +161,9 @@ keybinds clear-defaults=true {
     }
     shared_except "scroll" "locked" {
         bind "Alt s" { SwitchToMode "Scroll"; }
+    }
+    shared_except "scroll" "locked" {
+        bind "Alt /" { EditScrollback; SwitchToMode "Locked"; }
     }
     shared_except "session" "locked" {
         bind "Alt o" { SwitchToMode "Session"; }
