@@ -1,0 +1,19 @@
+#!/bin/bash
+# Runs rust-analyzer in a systemd scope of its own, so its proc-macro servers share the cap. When
+# the scope passes MemoryMax, the kernel kills rust-analyzer alone, instead of swapping the whole
+# machine to a halt. On tandemdrive, loading alone needs more than 4G. RUST_ANALYZER_MEMORY_MAX
+# sets the cap, as a size systemd reads such as 12G, and the cap is 8G when it isn't set.
+#
+# This directory comes before ~/.cargo/bin in PATH, so Mitos and the rust-analyzer plugin of every
+# Claude session start this script. The scope's description names the program that started
+# rust-analyzer and the directory it runs in, so `journalctl --user -g rust-analyzer` lists each
+# start with both.
+parent=$(ps -o comm= -p "$PPID")
+# systemd-run names a scope after its PID unless given a name. When a caller has already wrapped
+# this script in a scope of its own, the same PID would ask for that scope's name a second time.
+exec systemd-run --user --scope --quiet \
+  --unit="rust-analyzer-$$-$EPOCHSECONDS" \
+  --description="rust-analyzer for $parent in $PWD" \
+  --property=MemoryMax="${RUST_ANALYZER_MEMORY_MAX:-8G}" \
+  --property=MemorySwapMax=0 \
+  "$HOME/.cargo/bin/rust-analyzer" "$@"

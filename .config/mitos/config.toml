@@ -1,0 +1,78 @@
+theme = "nightfox"
+
+[editor]
+auto-completion = true
+bufferline = "never"
+color-modes = true
+cursorline = true
+end-of-line-diagnostics = "hint"
+idle-timeout = 200
+insert-final-newline = true
+line-number = "relative"
+middle-click-paste = false
+mouse = true
+rulers = [100, 160]
+scrolloff = 10
+text-width = 160
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.inline-diagnostics]
+cursor-line = "error"
+
+[editor.lsp]
+auto-signature-help = true
+display-inlay-hints = true
+display-messages = true
+display-signature-help-docs = true
+snippets = true
+
+[editor.indent-guides]
+character = "┆"
+render = true
+skip-levels = 1
+
+[editor.soft-wrap]
+enable = true
+wrap-at-text-width = true
+wrap-indicator = "↪"
+
+[editor.statusline]
+left = [
+  "mode",
+  "spinner",
+  "current-working-directory",
+  "separator",
+  "file-name",
+  "read-only-indicator",
+  "total-line-numbers",
+  # "version-control"
+]
+right = [
+  "register",
+  "diagnostics",
+  "workspace-diagnostics",
+  "file-encoding",
+  "position",
+  "separator",
+  "primary-selection-length",
+  "selections",
+]
+
+[editor.whitespace.render]
+newline = "all"
+space = "all"
+tab = "all"
+
+[editor.whitespace.characters]
+nbsp = "⍽"
+newline = "◀"
+space = "·"
+tab = "→"

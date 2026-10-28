@@ -1,0 +1,106 @@
+[[language]]
+name = "c"
+text-width = 160
+soft-wrap.enable = false
+language-servers = ["harper-ls"]
+
+[[language]]
+name = "html"
+text-width = 160
+soft-wrap.enable = false
+language-servers = ["harper-ls"]
+
+[[language]]
+name = "kdl"
+text-width = 160
+soft-wrap.enable = false
+
+[[language]]
+name = "csv"
+text-width = 160
+soft-wrap.enable = false
+
+[[language]]
+name = "git-commit"
+text-width = 80
+rulers = [73, 81]
+soft-wrap.enable = false
+
+[[language]]
+name = "jjdescription"
+text-width = 80
+rulers = [73, 81]
+soft-wrap.enable = false
+
+[[language]]
+name = "markdown"
+text-width = 160
+language-servers = ["harper-ls"]
+
+[[language]]
+name = "nu"
+text-width = 160
+
+[[language]]
+name = "rust"
+text-width = 160
+soft-wrap.enable = false
+language-servers = ["rust-analyzer", "harper-ls"]
+
+[language.debugger]
+command = "codelldb"
+name = "codelldb"
+port-arg = "--port {}"
+transport = "tcp"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+
+[[language.debugger.templates.completion]]
+completion = "filename"
+name = "binary"
+
+[language.debugger.templates.args]
+program = "{0}"
+runInTerminal = true
+
+[[language]]
+name = "toml"
+text-width = 160
+soft-wrap.enable = false
+language-servers = ["tombi"]
+# taplo reads a project's `taplo.toml`, which tombi ignores, and formats a long file in a fraction
+# of tombi's time.
+formatter = { command = "taplo", args = ["fmt", "-"] }
+
+# `rust-analyzer` resolves to ~/.local/bin/rust-analyzer, which caps its memory.
+[language-server.rust-analyzer.config]
+inlayHints.parameterHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
+
+[language-server.rust-analyzer.config.cargo]
+targetDir = true
+
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]
+
+[language-server.harper-ls.config.harper-ls]
+excludePatterns = [
+  "typos.toml",
+  "**/target/**",
+  "**/node_modules/**",
+  "**/vendor/**",
+  "**/*.generated.md",
+  "**/*.generated.rs",
+  # `ocpi-tariffs` project
+  "specs/v211/**",
+  "specs/v221/**",
+]
+
+[language-server.harper-ls.config.harper-ls.linters]
+# Off by choice, not because it is broken: house style omits the Oxford comma. The rule also
+# cannot tell a three-item list from an appositive, so it flags "the session, charging and not
+# charging, in hours" and asks for a comma before "and".
+OxfordComma = false

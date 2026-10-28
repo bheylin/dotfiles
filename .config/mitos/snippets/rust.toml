@@ -1,0 +1,123 @@
+[[snippets]]
+prefix = "pmod"
+body = 'pub mod $1'
+
+[[snippets]]
+prefix = "modtest"
+body = '''
+#[cfg(test)]
+mod tests {
+    $1
+}
+'''
+
+[[snippets]]
+prefix = "test"
+body = '''
+#[test]
+fn should_$1() -> TestResult {
+    Ok(())
+}
+'''
+
+[[snippets]]
+prefix = "fn"
+body = '''
+fn $1() {
+  todo!();
+}
+'''
+
+[[snippets]]
+prefix = "fn-res"
+body = '''
+fn $1() -> Result<()> {
+    Ok(())
+}
+'''
+
+[[snippets]]
+prefix = "fn-self"
+body = '''
+fn $1(&self) -> () {
+    todo!();
+}
+'''
+
+[[snippets]]
+prefix = "tktest"
+body = '''
+#[tokio::test]
+#[serial]
+async fn should_$1() -> TestResult {
+    Ok(())
+}
+'''
+
+[[snippets]]
+prefix = "enum"
+body = '''
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+pub enum $1 {
+    Variant
+}
+'''
+
+[[snippets]]
+prefix = "allow"
+body = '#[allow($1)]'
+
+[[snippets]]
+prefix = "impl-display"
+body = '''
+impl fmt::Display for $1 {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let s = match self {
+            case
+        };
+
+        f.write_str(s)
+    }
+}
+'''
+
+[[snippets]]
+prefix = "impl-debug"
+body = '''
+impl fmt::Debug for $1 {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let s = match self {
+            case
+        };
+
+        f.write_str(s)
+    }
+}
+'''
+
+[[snippets]]
+prefix = "impl-from"
+body = '''
+impl From<$1> for $2 {
+    fn from(value: $1) -> Self {
+        todo!();
+    }
+}
+'''
+
+[[snippets]]
+prefix = "query-as"
+body = '''
+pg_client
+    .query_as(
+        r"
+        $1
+        ",
+        &[&$2],
+    )
+    .await?
+'''
+
+[[snippets]]
+prefix = "with-context"
+body = '.with_context(|| format!(""))?;'
