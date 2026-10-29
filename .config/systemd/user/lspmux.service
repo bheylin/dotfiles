@@ -1,0 +1,14 @@
+[Unit]
+Description=Share one language server per workspace between Mitos and Claude
+Documentation=https://codeberg.org/p2502/lspmux
+
+[Service]
+Type=simple
+ExecStart=%h/.cargo/bin/lspmux server
+# lspmux starts `rust-analyzer` from PATH. ~/.local/bin comes first, so the wrapper there, which
+# caps rust-analyzer's memory, is the one that runs.
+Environment=PATH=%h/.local/bin:%h/.cargo/bin:/usr/local/bin:/usr/bin
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

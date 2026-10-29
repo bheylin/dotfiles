@@ -1,0 +1,7 @@
+# Mitos and Claude reach lspmux here. The client connects to the address the server listens on.
+listen = ["127.0.0.1", 27631]
+connect = ["127.0.0.1", 27631]
+
+# Seconds an instance runs after its last client disconnects, so a relaunched Mitos finds
+# rust-analyzer already loaded.
+instance_timeout = 300

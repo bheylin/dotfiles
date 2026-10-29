@@ -74,10 +74,20 @@ language-servers = ["tombi"]
 # of tombi's time.
 formatter = { command = "taplo", args = ["fmt", "-"] }
 
-# `rust-analyzer` resolves to ~/.local/bin/rust-analyzer, which caps its memory.
+# Mitos reaches rust-analyzer through lspmux, so Claude's tools can share the instance Mitos
+# starts. The lspmux user service starts rust-analyzer through ~/.local/bin/rust-analyzer, which
+# caps its memory.
+[language-server.rust-analyzer]
+command = "lspmux"
+
 [language-server.rust-analyzer.config]
 inlayHints.parameterHints.enable = false
 inlayHints.closingBraceHints.minLines = 10
+
+# lspmux drops the requests rust-analyzer sends to a client, so Mitos can't register a file
+# watcher. rust-analyzer watches the files itself instead, and sees changes Claude writes to disk.
+[language-server.rust-analyzer.config.files]
+watcher = "server"
 
 [language-server.rust-analyzer.config.cargo]
 targetDir = true
