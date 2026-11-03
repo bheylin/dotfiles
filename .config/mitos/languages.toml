@@ -2,13 +2,13 @@
 name = "c"
 text-width = 160
 soft-wrap.enable = false
-language-servers = ["harper-ls"]
+language-servers = []
 
 [[language]]
 name = "html"
 text-width = 160
 soft-wrap.enable = false
-language-servers = ["harper-ls"]
+language-servers = []
 
 [[language]]
 name = "kdl"
@@ -35,7 +35,7 @@ soft-wrap.enable = false
 [[language]]
 name = "markdown"
 text-width = 160
-language-servers = ["harper-ls"]
+language-servers = []
 
 [[language]]
 name = "nu"
@@ -45,7 +45,7 @@ text-width = 160
 name = "rust"
 text-width = 160
 soft-wrap.enable = false
-language-servers = ["rust-analyzer", "harper-ls"]
+language-servers = ["rust-analyzer"]
 
 [language.debugger]
 command = "codelldb"
