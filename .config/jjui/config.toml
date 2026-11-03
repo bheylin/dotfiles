@@ -1,0 +1,79 @@
+# PageUp/PageDown scroll the preview a half page, jjui having no full-page action.
+# The ctrl+u / ctrl+d defaults are kept alongside them.
+#
+# The scope to name is the one the cursor is in, not the preview. Resolution walks scopes
+# innermost first and an unfocused preview sits outside the list it previews, so a binding
+# placed only in ui.preview never runs: revisions matches pgup first and pages the list.
+# ui.preview is listed too, because focusing that pane with tab drops every outer scope.
+#
+# This block MUST stay above the first [table] header. A bare `bindings =` key written after
+# one is parsed as a key of that table, so jjui never sees it and reports nothing.
+bindings = [
+  { key = ["ctrl+u", "pgup"], action = "ui.preview_half_page_up", scope = "revisions" },
+  { key = ["ctrl+d", "pgdown"], action = "ui.preview_half_page_down", scope = "revisions" },
+  { key = ["ctrl+u", "pgup"], action = "ui.preview_half_page_up", scope = "ui.preview" },
+  { key = ["ctrl+d", "pgdown"], action = "ui.preview_half_page_down", scope = "ui.preview" },
+  { key = ["ctrl+u", "pgup"], action = "ui.preview_half_page_up", scope = "oplog" },
+  { key = ["ctrl+d", "pgdown"], action = "ui.preview_half_page_down", scope = "oplog" },
+  { key = ["ctrl+u", "pgup"], action = "ui.preview_half_page_up", scope = "revisions.details" },
+  { key = ["ctrl+d", "pgdown"], action = "ui.preview_half_page_down", scope = "revisions.details" },
+  { key = "y", action = "details.copy_file_path", scope = "revisions.details", desc = "copy path" },
+  # y copies the rev's bookmark, so duplicate moves from y to Y.
+  { key = "y", action = "revisions.copy_bookmark", scope = "revisions", desc = "copy bookmark" },
+  { key = "Y", action = "revisions.open_duplicate", scope = "revisions", desc = "duplicate" },
+]
+
+[ui]
+# theme = "base24-catppuccin-mocha"
+flash_message_display_seconds = 5
+
+[ui.colors]
+":selected" = { bg = "#223050" }
+
+[revisions]
+revset = "bookmarks() | @ | trunk() | mutable()"
+
+[ssh]
+hijack_askpass = true
+
+[[actions]]
+name = "details.copy_file_path"
+lua = """
+  local path = jjui.context.file()
+  if path then
+    jjui.copy_to_clipboard(path)
+    jjui.flash("copied " .. path)
+  else
+    jjui.flash({ text = "no file highlighted", error = true })
+  end
+  """
+
+[[actions]]
+name = "revisions.copy_bookmark"
+lua = """
+  local rev = jjui.context.change_id()
+  if not rev then
+    jjui.flash({ text = "no revision highlighted", error = true })
+    return
+  end
+  local out, err = jj("log", "--no-graph", "-r", rev, "-T", 'local_bookmarks.map(|b| b.name()).join(" ")')
+  if err then
+    jjui.flash({ text = err, error = true })
+    return
+  end
+  local names = {}
+  for n in (out or ""):gmatch("%S+") do
+    table.insert(names, n)
+  end
+  local name = names[1]
+  if not name then
+    jjui.flash({ text = "no bookmark on " .. rev, error = true })
+    return
+  end
+  jjui.copy_to_clipboard(name)
+  if #names > 1 then
+    jjui.flash("copied " .. name .. " (first of " .. #names .. " bookmarks)")
+  else
+    jjui.flash("copied " .. name)
+  end
+  """
